@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted - Present</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .success-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-card {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(0, 255, 255, 0.1);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border: 3px solid #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(16, 185, 129, 0.1);
+            animation: success-pulse 2s ease-in-out infinite;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #10b981;
+        }
+        
+        @keyframes success-pulse {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+                transform: scale(1.02);
+            }
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00ffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .success-message {
+            font-size: 1.25rem;
+            color: #b0c4de;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .success-details {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .success-details h3 {
+            color: #00ffff;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .success-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .success-details li {
+            color: #b0c4de;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .success-details li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #00ffff 0%, #0080ff 100%);
+            color: #0a0f1c;
+            border: 2px solid #00ffff;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.3), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(0, 255, 255, 0.3);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .back-button:hover::before {
+            left: 100%;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 15px -3px rgba(0, 0, 0, 0.3), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(0, 255, 255, 0.5);
+            border-color: #ffffff;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: #b0c4de;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info a {
+            color: #00ffff;
+            text-decoration: underline;
+            transition: all 0.2s ease;
+        }
+        
+        .contact-info a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .success-card {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            .success-title {
+                font-size: 2rem;
+            }
+            
+            .success-message {
+                font-size: 1.125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background">
+        <div class="circuit-lines"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M9 12l2 2 4-4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="9" stroke-width="2"/>
+                </svg>
+            </div>
+            
+            <h1 class="success-title">Application Submitted!</h1>
+            
+            <p class="success-message">
+                Thank you for your interest in joining the AI frontier with Present. 
+                Your application has been successfully received and is now being reviewed by our team.
+            </p>
+            
+            <div class="success-details">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                        <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke-width="2"/>
+                    </svg>
+                    What happens next?
+                </h3>
+                <ul>
+                    <li>The team will review your application</li>
+                    <li>We'll assess your skills and experience for the role</li>
+                    <li>If you're a good fit, we'll reach out within 5-7 business days</li>
+                    <li>Next steps may include a technical interview or project discussion</li>
+                </ul>
+            </div>
+            
+            <a href="https://apply.present-the-app.com" class="back-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M19 12H5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+            
+            <div class="contact-info">
+                <p>
+                    Have questions about your application?<br>
+                    Contact us at <a href="mailto:contact@present-the-app.com">contact@present-the-app.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated background particles (same as main page)
+        function createAnimatedParticles() {
+            const particlesContainer = document.querySelector('.floating-particles');
+            const particleCount = 12;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 4 + 2}px;
+                    height: ${Math.random() * 4 + 2}px;
+                    background: #00ffff;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px #00ffff;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: float-particle ${8 + Math.random() * 4}s ease-in-out infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                    opacity: ${0.3 + Math.random() * 0.7};
+                `;
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Add CSS for particle animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float-particle {
+                    0%, 100% { 
+                        transform: translateY(0px) translateX(0px) rotate(0deg); 
+                        opacity: 0.3; 
+                    }
+                    25% { 
+                        transform: translateY(-30px) translateX(20px) rotate(90deg); 
+                        opacity: 0.8; 
+                    }
+                    50% { 
+                        transform: translateY(-10px) translateX(-15px) rotate(180deg); 
+                        opacity: 1; 
+                    }
+                    75% { 
+                        transform: translateY(-25px) translateX(10px) rotate(270deg); 
+                        opacity: 0.6; 
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createAnimatedParticles();
+            
+            // Add a subtle entrance animation to the success card
+            const successCard = document.querySelector('.success-card');
+            successCard.style.opacity = '0';
+            successCard.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                successCard.style.transition = 'all 0.6s ease-out';
+                successCard.style.opacity = '1';
+                successCard.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - Present</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='12' width='24' height='16' rx='2' fill='%23667eea' stroke='%23333' stroke-width='1'/%3E%3Crect x='14' y='4' width='4' height='24' fill='%23f093fb' stroke='%23333' stroke-width='1'/%3E%3Crect x='4' y='14' width='24' height='4' fill='%23f093fb' stroke='%23333' stroke-width='1'/%3E%3Cpath d='M12 4 Q16 2 20 4 Q18 8 16 8 Q14 8 12 4' fill='%23ff6b6b' stroke='%23333' stroke-width='1'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="animated-background">
+        <div class="circuit-lines"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="ai-logo">
+                <div class="ai-face">
+                    <div class="ai-eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="ai-smile"></div>
+                </div>
+                <div class="circuit-connections"></div>
+            </div>
+            <h1 class="title">JOIN THE AI FRONTIER</h1>
+            <p class="subtitle">Build the Future. Boost Your Career.</p>
+            <p class="description">Are you a Software Engineer, Data Scientist, or just passionate about AI?</p>
+        </header>
+
+        <main class="main">
+            <form id="applicationForm" class="form" action="https://formsubmit.co/contact@present-the-app.com" method="POST">
+                <div class="form-section">
+                    <h2 class="section-title">Personal Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="label">First Name *</label>
+                            <input type="text" id="firstName" name="first_name" class="input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="label">Last Name *</label>
+                            <input type="text" id="lastName" name="last_name" class="input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="label">Email Address *</label>
+                        <input type="email" id="email" name="email" class="input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="label">Location (City, Country)</label>
+                        <input type="text" id="location" name="location" class="input" placeholder="e.g., Zurich, Switzerland">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">Professional Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="position" class="label">Position of Interest *</label>
+                        <select id="position" name="position" class="input select" required>
+                            <option value="">Select a position</option>
+                            <option value="frontend-developer">Frontend Developer</option>
+                            <option value="backend-developer">Backend Developer</option>
+                            <option value="fullstack-developer">Fullstack Developer</option>
+                            <option value="mobile-developer">Mobile Developer</option>
+                            <option value="ui-ux-designer">UI/UX Designer</option>
+                            <option value="product-manager">Product Manager</option>
+                            <option value="data-scientist">Data Scientist</option>
+                            <option value="devops-engineer">DevOps Engineer</option>
+                            <option value="differential-personality-psychology">Differential and/or Personality Psychology</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience" class="label">Years of Experience *</label>
+                        <select id="experience" name="experience" class="input select" required>
+                            <option value="">Select experience level</option>
+                            <option value="0-1">0-1 years (Entry Level)</option>
+                            <option value="2-3">2-3 years (Junior)</option>
+                            <option value="4-6">4-6 years (Mid Level)</option>
+                            <option value="7-10">7-10 years (Senior)</option>
+                            <option value="10+">10+ years (Lead/Principal)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentRole" class="label">Current Role/Company</label>
+                        <input type="text" id="currentRole" name="current_role" class="input" placeholder="e.g., Software Engineer at Tech Corp">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills" class="label">Key Skills & Technologies *</label>
+                        <textarea id="skills" name="skills" class="input textarea" rows="3" placeholder="e.g., React, Node.js, Python, AWS, etc." required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">Application Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="motivation" class="label">Why do you want to join Present? *</label>
+                        <textarea id="motivation" name="motivation" class="input textarea" rows="4" placeholder="Tell us what excites you about this opportunity..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolio" class="label">Portfolio/LinkedIn URL</label>
+                        <input type="url" id="portfolio" name="portfolio" class="input" placeholder="https://portfolio.example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github" class="label">GitHub Profile</label>
+                        <input type="url" id="github" name="github" class="input" placeholder="https://github.com/username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="availability" class="label">Availability *</label>
+                        <select id="availability" name="availability" class="input select" required>
+                            <option value="">Select availability</option>
+                            <option value="immediate">Immediate</option>
+                            <option value="2-weeks">2 weeks</option>
+                            <option value="1-month">1 month</option>
+                            <option value="2-months">2-3 months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalInfo" class="label">Additional Information</label>
+                        <textarea id="additionalInfo" name="additional_info" class="input textarea" rows="3" placeholder="Anything else you'd like us to know?"></textarea>
+                    </div>
+
+                    <!-- FormSubmit configuration -->
+                    <input type="hidden" name="_subject" value="New Job Application - Present (The App)">
+                    <input type="hidden" name="_template" value="box">
+                </div>
+
+                <div class="form-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent" class="checkbox-label">
+                            I consent to the processing of my personal data for recruitment purposes *
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">
+                        <span>Submit Application</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>Questions about this position? Contact us at <a href="mailto:contact@present-the-app.com">contact@present-the-app.com</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
