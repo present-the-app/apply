@@ -328,3 +328,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Featured Roles functionality
+function selectRole(roleValue) {
+    const positionSelect = document.getElementById('position');
+    const form = document.getElementById('applicationForm');
+    
+    // Set the position in the form
+    positionSelect.value = roleValue;
+    
+    // Smooth scroll to the form
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Add visual feedback
+    positionSelect.style.borderColor = '#00ffff';
+    positionSelect.style.boxShadow = '0 0 0 3px rgba(0, 255, 255, 0.2)';
+    
+    // Reset styling after 3 seconds
+    setTimeout(() => {
+        positionSelect.style.borderColor = '';
+        positionSelect.style.boxShadow = '';
+    }, 3000);
+    
+    // Focus on first empty required field
+    setTimeout(() => {
+        const firstNameInput = document.getElementById('firstName');
+        if (!firstNameInput.value) {
+            firstNameInput.focus();
+        }
+    }, 500);
+}
