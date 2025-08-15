@@ -34,47 +34,73 @@
         </header>
 
         <section class="featured-roles-section">
-            <h2 class="featured-title">Most Wanted Roles</h2>
-            <p class="featured-subtitle">Join our core team building next-generation AI applications</p>
+            <div class="roles-toggle" onclick="toggleRoles()">
+                <div class="roles-toggle-content">
+                    <div class="roles-header">
+                        <div class="roles-info">
+                            <h2 class="roles-title">🎯 Most Wanted Roles</h2>
+                            <p class="roles-count">3 priority positions • AI/ML focus • UI/UX design</p>
+                        </div>
+                        <div class="roles-chevron">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="roles-preview">
+                        <span class="preview-role">🎨 UI/UX Design</span>
+                        <span class="preview-role">🧮 AI/ML Engineer</span>
+                        <span class="preview-role">🧠 Psychology</span>
+                    </div>
+                </div>
+            </div>
             
-            <div class="roles-grid">
-                <div class="role-card" data-role="fullstack-developer">
-                    <div class="role-icon">🚀</div>
-                    <h3 class="role-title">Fullstack Developer</h3>
-                    <p class="role-description">Build end-to-end AI-powered features using React, Node.js, and cutting-edge ML APIs</p>
-                    <div class="role-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">AI/ML</span>
+            <div class="roles-expandable" id="rolesExpandable">
+                <div class="roles-grid">
+                    <div class="role-card" data-role="ui-ux-designer">
+                        <div class="role-header">
+                            <span class="role-icon">🎨</span>
+                            <h3 class="role-title">UI/UX Designer</h3>
+                        </div>
+                        <p class="role-description">Design intuitive user experiences for AI-powered data ingestion interfaces</p>
+                        <div class="role-tech">
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">User Research</span>
+                            <span class="tech-tag">Prototyping</span>
+                            <span class="tech-tag">AI/UX</span>
+                        </div>
+                        <button class="role-apply-btn" onclick="selectRole('ui-ux-designer')">Apply Now</button>
                     </div>
-                    <button class="role-apply-btn" onclick="selectRole('fullstack-developer')">Quick Apply</button>
-                </div>
 
-                <div class="role-card" data-role="data-scientist">
-                    <div class="role-icon">🧠</div>
-                    <h3 class="role-title">Data Scientist</h3>
-                    <p class="role-description">Design and implement machine learning models that power intelligent user experiences</p>
-                    <div class="role-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">AWS</span>
+                    <div class="role-card" data-role="backend-developer">
+                        <div class="role-header">
+                            <span class="role-icon">🧮</span>
+                            <h3 class="role-title">Software Engineer/Mathematics</h3>
+                        </div>
+                        <p class="role-description">Build AI/ML algorithms for data ingestion and recommendation engines</p>
+                        <div class="role-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Mathematics</span>
+                            <span class="tech-tag">ML/AI</span>
+                            <span class="tech-tag">Algorithms</span>
+                        </div>
+                        <button class="role-apply-btn" onclick="selectRole('backend-developer')">Apply Now</button>
                     </div>
-                    <button class="role-apply-btn" onclick="selectRole('data-scientist')">Quick Apply</button>
-                </div>
 
-                <div class="role-card" data-role="frontend-developer">
-                    <div class="role-icon">✨</div>
-                    <h3 class="role-title">Frontend Developer</h3>
-                    <p class="role-description">Craft beautiful, responsive interfaces that make AI accessible to everyone</p>
-                    <div class="role-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">Design</span>
+                    <div class="role-card" data-role="differential-personality-psychology">
+                        <div class="role-header">
+                            <span class="role-icon">🧠</span>
+                            <h3 class="role-title">Psychology Specialist</h3>
+                        </div>
+                        <p class="role-description">Create meaningful data ingestion experiences using personality psychology insights</p>
+                        <div class="role-tech">
+                            <span class="tech-tag">Psychology</span>
+                            <span class="tech-tag">User Behavior</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">UX Research</span>
+                        </div>
+                        <button class="role-apply-btn" onclick="selectRole('differential-personality-psychology')">Apply Now</button>
                     </div>
-                    <button class="role-apply-btn" onclick="selectRole('frontend-developer')">Quick Apply</button>
                 </div>
             </div>
         </section>

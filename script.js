@@ -330,6 +330,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Featured Roles functionality
+function toggleRoles() {
+    const toggle = document.querySelector('.roles-toggle');
+    const expandable = document.getElementById('rolesExpandable');
+    
+    toggle.classList.toggle('expanded');
+    expandable.classList.toggle('expanded');
+}
+
 function selectRole(roleValue) {
     const positionSelect = document.getElementById('position');
     const form = document.getElementById('applicationForm');
@@ -357,4 +365,12 @@ function selectRole(roleValue) {
             firstNameInput.focus();
         }
     }, 500);
+    
+    // Collapse the roles section after selection
+    setTimeout(() => {
+        const toggle = document.querySelector('.roles-toggle');
+        const expandable = document.getElementById('rolesExpandable');
+        toggle.classList.remove('expanded');
+        expandable.classList.remove('expanded');
+    }, 1000);
 }
