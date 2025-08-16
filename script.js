@@ -60,6 +60,8 @@ function detectAndApplyTheme() {
 }
 
 function updateContentForAcademic() {
+    console.log('Updating content for academic theme'); // Debug log
+    
     // Add academic header graphic
     const header = document.querySelector('.header');
     if (header && !header.querySelector('.academic-graphic')) {
@@ -82,6 +84,9 @@ function updateContentForAcademic() {
         `;
         header.insertBefore(academicGraphic, header.firstChild);
     }
+    
+    // Create psychology floating symbols
+    createPsychologyFloatingSymbols();
     
     // Update main title and subtitle
     const title = document.querySelector('.title');
@@ -115,6 +120,153 @@ function updateContentForAcademic() {
         const psychDesc = roleCards[2].querySelector('.role-description');
         if (psychDesc) psychDesc.textContent = 'Apply psychological research to create engaging and scientifically-grounded user experiences';
     }
+}
+
+// Create cognitive psychology map animation for academic theme
+function createPsychologyFloatingSymbols() {
+    // Only create if network doesn't already exist
+    if (document.querySelector('.neural-network')) {
+        return;
+    }
+    
+    console.log('Creating cognitive psychology map');
+    
+    const networkContainer = document.createElement('div');
+    networkContainer.className = 'neural-network';
+    document.body.appendChild(networkContainer);
+    
+    // Cognitive psychology domains and their insights
+    const cognitiveRegions = [
+        { name: 'Working Memory', insights: ['Information processing', 'Cognitive load', 'Attention span'], x: 0.2, y: 0.25 },
+        { name: 'Long-term Memory', insights: ['Memory consolidation', 'Retrieval processes', 'Schema formation'], x: 0.8, y: 0.3 },
+        { name: 'Attention', insights: ['Selective attention', 'Focus mechanisms', 'Cognitive control'], x: 0.15, y: 0.7 },
+        { name: 'Decision Making', insights: ['Heuristics & biases', 'Risk assessment', 'Choice architecture'], x: 0.85, y: 0.65 },
+        { name: 'Social Cognition', insights: ['Theory of mind', 'Social perception', 'Empathy processes'], x: 0.5, y: 0.15 },
+        { name: 'Emotion Regulation', insights: ['Emotional intelligence', 'Coping strategies', 'Mood patterns'], x: 0.3, y: 0.8 },
+        { name: 'Language Processing', insights: ['Semantic networks', 'Syntax processing', 'Comprehension'], x: 0.7, y: 0.8 },
+        { name: 'Executive Function', insights: ['Cognitive flexibility', 'Inhibitory control', 'Planning abilities'], x: 0.5, y: 0.5 }
+    ];
+    
+    // Create cognitive region nodes with even distribution
+    const nodes = [];
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    cognitiveRegions.forEach((region, index) => {
+        const node = document.createElement('div');
+        node.className = 'neural-node';
+        node.setAttribute('data-region', region.name);
+        
+        // Calculate position based on viewport percentage
+        const x = Math.max(80, Math.min(viewportWidth - 80, region.x * viewportWidth));
+        const y = Math.max(100, Math.min(viewportHeight - 100, region.y * viewportHeight));
+        
+        node.style.left = x + 'px';
+        node.style.top = y + 'px';
+        
+        networkContainer.appendChild(node);
+        nodes.push({
+            element: node, 
+            x: x, 
+            y: y, 
+            region: region.name,
+            insights: region.insights
+        });
+    });
+    
+    // Create connections based on psychological relationships
+    const psychologicalConnections = [
+        [0, 1], // Working Memory ↔ Long-term Memory
+        [0, 2], // Working Memory ↔ Attention
+        [0, 7], // Working Memory ↔ Executive Function
+        [1, 4], // Long-term Memory ↔ Social Cognition
+        [1, 6], // Long-term Memory ↔ Language Processing
+        [2, 7], // Attention ↔ Executive Function
+        [3, 7], // Decision Making ↔ Executive Function
+        [3, 5], // Decision Making ↔ Emotion Regulation
+        [4, 5], // Social Cognition ↔ Emotion Regulation
+        [4, 6], // Social Cognition ↔ Language Processing
+        [5, 7], // Emotion Regulation ↔ Executive Function
+        [6, 7]  // Language Processing ↔ Executive Function
+    ];
+    
+    const connections = [];
+    psychologicalConnections.forEach(([i, j]) => {
+        const connection = document.createElement('div');
+        connection.className = 'neural-connection';
+        
+        const dx = nodes[j].x - nodes[i].x;
+        const dy = nodes[j].y - nodes[i].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx);
+        
+        connection.style.left = nodes[i].x + 'px';
+        connection.style.top = nodes[i].y + 'px';
+        connection.style.width = distance + 'px';
+        connection.style.transform = `rotate(${angle}rad)`;
+        
+        networkContainer.appendChild(connection);
+        connections.push({ element: connection, fromNode: i, toNode: j });
+    });
+    
+    console.log(`Created ${nodes.length} cognitive regions and ${connections.length} connections`);
+    
+    // Start cognitive activity simulation
+    function triggerCognitiveActivity() {
+        // Select a random cognitive region to activate
+        const randomIndex = Math.floor(Math.random() * nodes.length);
+        const activeNode = nodes[randomIndex];
+        
+        activeNode.element.classList.add('active');
+        
+        // Remove active class after animation
+        setTimeout(() => {
+            activeNode.element.classList.remove('active');
+        }, 2500);
+        
+        // Activate related connections
+        connections.forEach(conn => {
+            if (conn.fromNode === randomIndex || conn.toNode === randomIndex) {
+                if (Math.random() < 0.6) { // 60% chance for related connections
+                    conn.element.classList.add('active');
+                    setTimeout(() => {
+                        conn.element.classList.remove('active');
+                    }, 2000);
+                }
+            }
+        });
+        
+        // Show domain-specific insight
+        if (Math.random() < 0.7) { // 70% chance to show insight
+            const insight = document.createElement('div');
+            insight.className = 'psychology-insight';
+            
+            // Get random insight from the active region
+            const randomInsight = activeNode.insights[Math.floor(Math.random() * activeNode.insights.length)];
+            insight.textContent = randomInsight;
+            
+            // Position near the activated node with better spacing
+            const offsetX = (Math.random() - 0.5) * 150;
+            const offsetY = (Math.random() - 0.5) * 120;
+            
+            insight.style.left = Math.max(20, Math.min(viewportWidth - 200, activeNode.x + offsetX)) + 'px';
+            insight.style.top = Math.max(20, Math.min(viewportHeight - 50, activeNode.y + offsetY)) + 'px';
+            
+            networkContainer.appendChild(insight);
+            insight.classList.add('active');
+            
+            // Remove insight after animation
+            setTimeout(() => {
+                insight.remove();
+            }, 4500);
+        }
+        
+        // Schedule next cognitive process
+        setTimeout(triggerCognitiveActivity, 3000 + Math.random() * 4000); // 3-7 seconds
+    }
+    
+    // Start the cognitive simulation after a short delay
+    setTimeout(triggerCognitiveActivity, 1500);
 }
 
 // Form validation and submission handling
@@ -247,8 +399,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (response.ok) {
-                // Redirect to success page after successful submission
-                window.location.href = 'success.html';
+                // Redirect to success page with theme parameter if academic
+                const isAcademic = document.body.classList.contains('academic-theme');
+                const successUrl = isAcademic ? 'success.html?style=academic' : 'success.html';
+                window.location.href = successUrl;
             } else {
                 showErrorMessage('There was a problem submitting your application. Please try again.');
                 // Reset button state

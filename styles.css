@@ -737,6 +737,22 @@ body {
     display: none !important;
 }
 
+/* Academic Checkbox Styling */
+.academic-theme .checkbox-group {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid rgba(52, 73, 94, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.08) !important;
+}
+
+.academic-theme .checkbox-group input[type="checkbox"] {
+    accent-color: #34495e !important;
+    border: 2px solid #34495e !important;
+}
+
+.academic-theme .checkbox-label {
+    color: #34495e !important;
+}
+
 /* Fix submit button styling */
 .academic-theme .submit-btn {
     background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
@@ -790,6 +806,114 @@ body {
     filter: drop-shadow(0 2px 4px rgba(52, 73, 94, 0.1));
 }
 
+/* Academic Neural Network Animation */
+.academic-theme .neural-network {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.academic-theme .neural-node {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #34495e;
+    border-radius: 50%;
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(52, 73, 94, 0.3);
+}
+
+.academic-theme .neural-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(52, 73, 94, 0.2), rgba(52, 73, 94, 0.4), rgba(52, 73, 94, 0.2));
+    transform-origin: left center;
+    opacity: 0;
+}
+
+.academic-theme .psychology-insight {
+    position: absolute;
+    font-size: 0.75rem;
+    color: #34495e;
+    opacity: 0;
+    font-weight: 400;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    border: 1px solid rgba(52, 73, 94, 0.2);
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+}
+
+@keyframes neural-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+        box-shadow: 0 0 10px rgba(52, 73, 94, 0.3);
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.8;
+        box-shadow: 0 0 20px rgba(52, 73, 94, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.4;
+        box-shadow: 0 0 10px rgba(52, 73, 94, 0.3);
+    }
+}
+
+@keyframes connection-activate {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes insight-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.8);
+    }
+    20% {
+        opacity: 0.9;
+        transform: translateY(0) scale(1);
+    }
+    80% {
+        opacity: 0.9;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.8);
+    }
+}
+
+.academic-theme .neural-node.active {
+    animation: neural-pulse 2s ease-in-out;
+}
+
+.academic-theme .neural-connection.active {
+    animation: connection-activate 1.5s ease-in-out;
+}
+
+.academic-theme .psychology-insight.active {
+    animation: insight-appear 4s ease-in-out;
+}
+
 /* Academic Theme Mobile Fixes */
 @media (max-width: 768px) {
     .academic-theme .roles-expandable.expanded {
@@ -812,6 +936,10 @@ body {
     .academic-theme .academic-circuit svg {
         width: 100px;
         height: 35px;
+    }
+    
+    .academic-theme .psychology-symbol {
+        font-size: 1.5rem;
     }
 }
 

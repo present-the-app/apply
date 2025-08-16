@@ -182,6 +182,117 @@
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         
+        /* Academic Theme Styling for Success Page */
+        .academic-theme {
+            background: #f5f2e8 !important;
+            color: #2c3e50 !important;
+        }
+
+        .academic-theme .animated-background {
+            display: none !important;
+        }
+
+        .academic-theme::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(52, 73, 94, 0.02) 0%, rgba(44, 62, 80, 0.03) 100%),
+                radial-gradient(circle at 20% 80%, rgba(52, 73, 94, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+            z-index: -2;
+        }
+
+        .academic-theme .success-card {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border: 2px solid #34495e !important;
+            box-shadow: 0 10px 30px rgba(52, 73, 94, 0.1) !important;
+        }
+
+        .academic-theme .success-icon {
+            border-color: #34495e !important;
+            background: rgba(52, 73, 94, 0.1) !important;
+        }
+
+        .academic-theme .success-icon svg {
+            color: #34495e !important;
+        }
+
+        .academic-theme .success-title {
+            color: #2c3e50 !important;
+            text-shadow: none !important;
+        }
+
+        .academic-theme .success-message {
+            color: #5d6d7e !important;
+        }
+
+        .academic-theme .success-details {
+            background: rgba(52, 73, 94, 0.1) !important;
+            border: 2px solid rgba(52, 73, 94, 0.2) !important;
+        }
+
+        .academic-theme .success-details h3 {
+            color: #34495e !important;
+        }
+
+        .academic-theme .success-details h3 svg {
+            color: #34495e !important;
+        }
+
+        .academic-theme .success-details li {
+            color: #5d6d7e !important;
+        }
+
+        .academic-theme .success-details li::before {
+            color: #34495e !important;
+        }
+
+        .academic-theme .back-button {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+            border-color: #34495e !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(52, 73, 94, 0.3) !important;
+        }
+
+        .academic-theme .back-button:hover {
+            background: linear-gradient(135deg, #4f6b8c 0%, #3d5a75 100%) !important;
+            box-shadow: 0 8px 25px rgba(52, 73, 94, 0.4) !important;
+            border-color: #2c3e50 !important;
+        }
+
+        .academic-theme .contact-info {
+            color: #5d6d7e !important;
+            border-top-color: rgba(52, 73, 94, 0.2) !important;
+        }
+
+        .academic-theme .contact-info a {
+            color: #34495e !important;
+        }
+
+        .academic-theme .contact-info a:hover {
+            color: #2c3e50 !important;
+            text-shadow: none !important;
+        }
+
+        @keyframes academic-success-pulse {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(52, 73, 94, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(52, 73, 94, 0.5);
+                transform: scale(1.02);
+            }
+        }
+
+        .academic-theme .success-icon {
+            animation: academic-success-pulse 2s ease-in-out infinite !important;
+        }
+
         @media (max-width: 768px) {
             .success-card {
                 padding: 2rem 1.5rem;
@@ -303,9 +414,41 @@
             document.head.appendChild(style);
         }
 
+        // Theme detection for success page
+        function detectAndApplyTheme() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const style = urlParams.get('style');
+            
+            if (style === 'academic') {
+                document.body.classList.add('academic-theme');
+                // Update back button to link to academic version
+                const backButton = document.querySelector('.back-button');
+                if (backButton) {
+                    backButton.href = 'index.html?style=academic';
+                }
+                
+                // Update content for academic audience
+                const successTitle = document.querySelector('.success-title');
+                const successMessage = document.querySelector('.success-message');
+                
+                if (successTitle) {
+                    successTitle.textContent = 'Application Submitted Successfully!';
+                }
+                
+                if (successMessage) {
+                    successMessage.textContent = 'Thank you for your interest in contributing to the future of psychology and AI. Your application has been received and will be reviewed by our academic research team.';
+                }
+            }
+        }
+
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            createAnimatedParticles();
+            detectAndApplyTheme();
+            
+            // Only create particles if not academic theme
+            if (!document.body.classList.contains('academic-theme')) {
+                createAnimatedParticles();
+            }
             
             // Add a subtle entrance animation to the success card
             const successCard = document.querySelector('.success-card');
