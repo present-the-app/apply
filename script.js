@@ -374,9 +374,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form submission
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
+        console.log('Form submission started');
+        console.log('Academic theme active:', document.body.classList.contains('academic-theme'));
+        
         if (!validateForm()) {
+            console.log('Form validation failed');
             // Scroll to first error
             const firstError = form.querySelector('.form-group.error');
             if (firstError) {
@@ -385,40 +387,51 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        console.log('Form validation passed');
+
         // Show loading state
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
         submitBtn.querySelector('span').textContent = 'Submitting...';
 
-        // Submit form data using FormSubmit
-        const formData = new FormData(form);
+        // For FormSubmit to work properly, we need to allow the natural form submission
+        // Add theme parameter as hidden input before submission
+        const isAcademic = document.body.classList.contains('academic-theme');
+        console.log('Is academic theme:', isAcademic);
         
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                // Redirect to success page with theme parameter if academic
-                const isAcademic = document.body.classList.contains('academic-theme');
-                const successUrl = isAcademic ? 'success.html?style=academic' : 'success.html';
-                window.location.href = successUrl;
-            } else {
-                showErrorMessage('There was a problem submitting your application. Please try again.');
-                // Reset button state
-                submitBtn.classList.remove('loading');
-                submitBtn.disabled = false;
-                submitBtn.querySelector('span').textContent = 'Submit Application';
+        if (isAcademic) {
+            // Add theme information to form data
+            let themeInput = form.querySelector('input[name="_theme"]');
+            if (!themeInput) {
+                themeInput = document.createElement('input');
+                themeInput.type = 'hidden';
+                themeInput.name = '_theme';
+                themeInput.value = 'academic';
+                form.appendChild(themeInput);
             }
-        })
-        .catch(error => {
-            console.error('Form submission error:', error);
-            showEmailFallback();
-            // Reset button state
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
-            submitBtn.querySelector('span').textContent = 'Submit Application';
-        });
+        }
+
+        // Set the redirect URL based on theme
+        let redirectInput = form.querySelector('input[name="_next"]');
+        if (!redirectInput) {
+            redirectInput = document.createElement('input');
+            redirectInput.type = 'hidden';
+            redirectInput.name = '_next';
+            form.appendChild(redirectInput);
+        }
+        
+        const successUrl = isAcademic 
+            ? window.location.origin + window.location.pathname.replace('index.html', '') + 'success.html?style=academic'
+            : window.location.origin + window.location.pathname.replace('index.html', '') + 'success.html';
+        
+        redirectInput.value = successUrl;
+        
+        console.log('Redirect URL set to:', successUrl);
+        console.log('Form action:', form.action);
+        
+        // Allow the form to submit naturally to FormSubmit
+        // Don't preventDefault - let it submit normally
+        console.log('Allowing natural form submission to FormSubmit');
     });
 
     // Fallback - show email option
