@@ -337,10 +337,13 @@ body {
 }
 
 .roles-expandable.expanded {
-    max-height: 800px;
+    max-height: none;
+    height: auto;
     padding: 1.5rem;
     border: 1px solid rgba(0, 255, 255, 0.2);
     border-top: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .roles-grid {
@@ -473,11 +476,342 @@ body {
     .roles-grid {
         grid-template-columns: 1fr;
         gap: 0.75rem;
+        min-height: auto;
     }
     
     .preview-role {
         font-size: 0.75rem;
         padding: 0.3rem 0.6rem;
+    }
+    
+    .roles-expandable {
+        border-radius: 0 0 12px 12px;
+    }
+    
+    .roles-expandable.expanded {
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 1rem;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    
+    .role-card {
+        margin-bottom: 0.5rem;
+    }
+    
+    .role-card:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Academic Theme - Inspired by Poster Design */
+.academic-theme {
+    background: #f5f2e8 !important;
+    color: #2c3e50 !important;
+}
+
+.academic-theme .animated-background {
+    display: none;
+}
+
+.academic-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(52, 73, 94, 0.02) 0%, rgba(44, 62, 80, 0.03) 100%),
+        radial-gradient(circle at 20% 80%, rgba(52, 73, 94, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(44, 62, 80, 0.05) 0%, transparent 50%);
+    z-index: -2;
+}
+
+/* Academic Circuit Pattern */
+.academic-theme .container::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 60px;
+    background-image: 
+        linear-gradient(45deg, #34495e 2px, transparent 2px),
+        linear-gradient(-45deg, #34495e 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* Academic Header Styling */
+.academic-theme .header {
+    color: #2c3e50;
+    position: relative;
+}
+
+.academic-theme .header::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #2c3e50 0px,
+        #2c3e50 40px,
+        transparent 40px,
+        transparent 60px
+    );
+    opacity: 0.8;
+}
+
+.academic-theme .title {
+    color: #2c3e50 !important;
+    text-shadow: none !important;
+    font-weight: 700;
+    position: relative;
+}
+
+.academic-theme .title::after {
+    content: 'Ψ';
+    position: absolute;
+    top: -10px;
+    right: -40px;
+    font-size: 2rem;
+    color: #34495e;
+    opacity: 0.6;
+}
+
+.academic-theme .subtitle {
+    color: #34495e !important;
+    font-weight: 500;
+    border-bottom: 2px solid #34495e;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.academic-theme .description {
+    color: #5d6d7e !important;
+    max-width: 700px;
+}
+
+/* Academic Roles Section */
+.academic-theme .roles-toggle {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid #34495e !important;
+    color: #2c3e50;
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.1);
+}
+
+.academic-theme .roles-toggle:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: #2c3e50 !important;
+    box-shadow: 0 8px 25px rgba(52, 73, 94, 0.15);
+}
+
+.academic-theme .roles-title {
+    color: #2c3e50 !important;
+}
+
+.academic-theme .roles-count {
+    color: #5d6d7e !important;
+}
+
+.academic-theme .roles-chevron {
+    color: #34495e !important;
+}
+
+.academic-theme .preview-role {
+    background: rgba(52, 73, 94, 0.1) !important;
+    color: #34495e !important;
+    border: 1px solid rgba(52, 73, 94, 0.2) !important;
+}
+
+.academic-theme .roles-toggle:hover .preview-role {
+    background: rgba(52, 73, 94, 0.15) !important;
+    border-color: rgba(52, 73, 94, 0.3) !important;
+}
+
+.academic-theme .roles-expandable {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-color: #34495e !important;
+}
+
+.academic-theme .role-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid rgba(52, 73, 94, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.08);
+}
+
+.academic-theme .role-card:hover {
+    border-color: rgba(52, 73, 94, 0.4) !important;
+    box-shadow: 0 8px 25px rgba(52, 73, 94, 0.12);
+}
+
+.academic-theme .role-card::before {
+    background: linear-gradient(90deg, #34495e, #2c3e50, #5d6d7e) !important;
+}
+
+.academic-theme .role-title {
+    color: #2c3e50 !important;
+}
+
+.academic-theme .role-description {
+    color: #5d6d7e !important;
+}
+
+.academic-theme .tech-tag {
+    background: rgba(52, 73, 94, 0.1) !important;
+    color: #34495e !important;
+    border: 1px solid rgba(52, 73, 94, 0.2) !important;
+}
+
+.academic-theme .role-apply-btn {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.3);
+}
+
+.academic-theme .role-apply-btn:hover {
+    background: linear-gradient(135deg, #4f6b8c 0%, #3d5a75 100%) !important;
+    box-shadow: 0 6px 20px rgba(52, 73, 94, 0.4);
+}
+
+/* Academic Form Styling */
+.academic-theme .main {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid #34495e !important;
+    box-shadow: 0 10px 30px rgba(52, 73, 94, 0.1) !important;
+}
+
+.academic-theme .section-title {
+    color: #2c3e50 !important;
+    border-bottom-color: rgba(52, 73, 94, 0.3) !important;
+    text-shadow: none !important;
+}
+
+.academic-theme .label {
+    color: #34495e !important;
+}
+
+.academic-theme .input {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 2px solid rgba(52, 73, 94, 0.2) !important;
+    color: #2c3e50 !important;
+}
+
+.academic-theme .input:focus {
+    border-color: #34495e !important;
+    box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.1) !important;
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+.academic-theme .input::placeholder {
+    color: rgba(93, 109, 126, 0.6) !important;
+}
+
+.academic-theme .submit-btn {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.3) !important;
+}
+
+.academic-theme .submit-btn:hover {
+    background: linear-gradient(135deg, #4f6b8c 0%, #3d5a75 100%) !important;
+    box-shadow: 0 8px 25px rgba(52, 73, 94, 0.4) !important;
+}
+
+.academic-theme .footer {
+    color: #5d6d7e !important;
+}
+
+.academic-theme .footer a {
+    color: #34495e !important;
+}
+
+/* Hide AI face in academic theme */
+.academic-theme .ai-logo {
+    display: none !important;
+}
+
+/* Fix submit button styling */
+.academic-theme .submit-btn {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+    box-shadow: 0 4px 15px rgba(52, 73, 94, 0.3) !important;
+    color: white !important;
+}
+
+.academic-theme .submit-btn:hover {
+    background: linear-gradient(135deg, #4f6b8c 0%, #3d5a75 100%) !important;
+    box-shadow: 0 8px 25px rgba(52, 73, 94, 0.4) !important;
+    transform: translateY(-2px);
+}
+
+.academic-theme .submit-btn .btn-icon {
+    color: white !important;
+}
+
+/* Academic Header Graphic */
+.academic-graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.academic-symbols {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.academic-symbols .symbol {
+    font-size: 2.5rem;
+    color: #34495e;
+    font-weight: 300;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.academic-symbols .symbol:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.academic-circuit {
+    opacity: 0.6;
+}
+
+.academic-circuit svg {
+    filter: drop-shadow(0 2px 4px rgba(52, 73, 94, 0.1));
+}
+
+/* Academic Theme Mobile Fixes */
+@media (max-width: 768px) {
+    .academic-theme .roles-expandable.expanded {
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 1rem;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        border-color: #34495e !important;
+    }
+    
+    .academic-theme .academic-symbols {
+        gap: 1.5rem;
+    }
+    
+    .academic-theme .academic-symbols .symbol {
+        font-size: 2rem;
+    }
+    
+    .academic-theme .academic-circuit svg {
+        width: 100px;
+        height: 35px;
     }
 }
 

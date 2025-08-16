@@ -47,8 +47,79 @@ function createAnimatedParticles() {
     document.head.appendChild(style);
 }
 
+// Theme detection and application
+function detectAndApplyTheme() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const style = urlParams.get('style');
+    
+    if (style === 'academic') {
+        document.body.classList.add('academic-theme');
+        // Update content for academic audience
+        updateContentForAcademic();
+    }
+}
+
+function updateContentForAcademic() {
+    // Add academic header graphic
+    const header = document.querySelector('.header');
+    if (header && !header.querySelector('.academic-graphic')) {
+        const academicGraphic = document.createElement('div');
+        academicGraphic.className = 'academic-graphic';
+        academicGraphic.innerHTML = `
+            <div class="academic-symbols">
+                <span class="symbol">Ψ</span>
+                <span class="symbol">∞</span>
+                <span class="symbol">∆</span>
+            </div>
+            <div class="academic-circuit">
+                <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+                    <path d="M10 20 L30 20 L35 15 L40 25 L45 15 L50 25 L55 20 L110 20" stroke="#34495e" stroke-width="2" fill="none"/>
+                    <circle cx="20" cy="20" r="3" fill="#34495e"/>
+                    <circle cx="70" cy="20" r="3" fill="#34495e"/>
+                    <circle cx="100" cy="20" r="3" fill="#34495e"/>
+                </svg>
+            </div>
+        `;
+        header.insertBefore(academicGraphic, header.firstChild);
+    }
+    
+    // Update main title and subtitle
+    const title = document.querySelector('.title');
+    const subtitle = document.querySelector('.subtitle');
+    const description = document.querySelector('.description');
+    
+    if (title) title.textContent = 'JOIN THE AI FRONTIER';
+    if (subtitle) subtitle.textContent = 'Build the Future, Improve the World';
+    if (description) description.textContent = 'We\'re looking for experts in psychology, UX design, and AI to help shape the future of human-computer interaction.';
+    
+    // Update roles preview for academic theme
+    const previewRoles = document.querySelectorAll('.preview-role');
+    if (previewRoles.length >= 3) {
+        previewRoles[0].innerHTML = '🎨 UX Design';
+        previewRoles[1].innerHTML = '🧮 AI Research';
+        previewRoles[2].innerHTML = 'Ψ Psychology';
+    }
+    
+    // Update role descriptions for academic audience
+    const roleCards = document.querySelectorAll('.role-card');
+    if (roleCards.length >= 3) {
+        // UX Designer
+        const uxDesc = roleCards[0].querySelector('.role-description');
+        if (uxDesc) uxDesc.textContent = 'Design user-centered experiences that make complex psychological data accessible and meaningful';
+        
+        // AI Engineer
+        const aiDesc = roleCards[1].querySelector('.role-description');
+        if (aiDesc) aiDesc.textContent = 'Research and develop algorithms that understand human behavior and personality patterns';
+        
+        // Psychology
+        const psychDesc = roleCards[2].querySelector('.role-description');
+        if (psychDesc) psychDesc.textContent = 'Apply psychological research to create engaging and scientifically-grounded user experiences';
+    }
+}
+
 // Form validation and submission handling
 document.addEventListener('DOMContentLoaded', function() {
+    detectAndApplyTheme();
     createAnimatedParticles();
     const form = document.getElementById('applicationForm');
     const submitBtn = form.querySelector('.submit-btn');
